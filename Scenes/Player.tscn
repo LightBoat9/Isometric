@@ -1,18 +1,36 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Textures/block_player.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/PlayerCamera.gd" type="Script" id=2]
+[ext_resource path="res://Textures/Player/Float/0.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Player/Float/1.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Player/Float/2.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Player/Float/3.png" type="Texture" id=6]
+[ext_resource path="res://Textures/Player/Float/4.png" type="Texture" id=7]
+[ext_resource path="res://Textures/Player/Float/5.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/PlayerGraphics.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/PlayerMovement.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/PlayerAttack.gd" type="Script" id=11]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 16, -8, 32, 0, 16, 8, 0, 0 )
+radius = 3.75
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Float",
+"speed": 8.0
+} ]
 
 [node name="Player" type="KinematicBody2D"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -15, 7.5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 15, 22.5 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -32,22 +50,37 @@ limit/bottom = 10000000
 drag_margin/h_enabled = false
 drag_margin/v_enabled = false
 smoothing/enable = true
-smoothing/speed = 5.0
+smoothing/speed = 3.0
 drag_margin/left = 0.0
 drag_margin/top = 0.0
 drag_margin/right = 0.0
 drag_margin/bottom = 0.0
+script/script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="PlayerSprites" type="AnimatedSprite" parent="."]
 
-texture = ExtResource( 2 )
+frames = SubResource( 2 )
+animation = "Float"
+playing = true
+centered = false
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( -15, 7.5 )
-build_mode = 0
-polygon = Vector2Array( 0, 0, 16, 8, 32, 0, 16, -8 )
-shape_range = Vector2( 0, 0 )
+transform/pos = Vector2( 15, 22.5 )
+shape = SubResource( 1 )
 trigger = false
+_update_shape_index = 0
+
+[node name="PlayerGraphics" type="Node" parent="."]
+
+script/script = ExtResource( 9 )
+
+[node name="PlayerMovement" type="Node" parent="."]
+
+script/script = ExtResource( 10 )
+
+[node name="PlayerAttack" type="Node" parent="."]
+
+script/script = ExtResource( 11 )
 
 

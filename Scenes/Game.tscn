@@ -5,7 +5,7 @@
 [ext_resource path="res://Scripts/Math.gd" type="Script" id=3]
 [ext_resource path="res://Tilesets/Test.tres" type="TileSet" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Textures/chest.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/EnemySlime.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node2D"]
 
@@ -81,10 +81,32 @@ transform/pos = Vector2( 256.83, 133.935 )
 collision/layers = 254
 collision/mask = 254
 
-[node name="Sprite" type="Sprite" parent="Walls"]
+[node name="EnemySlime" parent="Walls" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 330, 105 )
-texture = ExtResource( 6 )
-centered = false
+transform/pos = Vector2( -75.8102, 137.18 )
+
+[node name="EnemySlime1" parent="Walls" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 35.1976, 210.283 )
+
+[node name="EnemySlime2" parent="Walls" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -10.83, 179.598 )
+
+[node name="EnemySlime3" parent="Walls" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 2.70752, 132.668 )
+
+[node name="EnemySlime4" parent="Walls" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -57.7602, 180.501 )
+
+[node name="EnemySlime5" parent="Walls" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -84.8352, 100.178 )
+
+[node name="EnemySlime6" parent="Walls" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -157.035, 139.888 )
 
 

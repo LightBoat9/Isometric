@@ -25,6 +25,9 @@ func _process(delta):
 func collision(body):
 	if (body.is_in_group("Wall")):
 		destroy()
+	elif (body.is_in_group("Enemies")):
+		body.damage()
+		destroy()
 	
 func destroy():
 	add_explode_particles()

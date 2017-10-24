@@ -11,5 +11,5 @@ func animation_end():
 	
 func fireball_attack():
 	var inst = fireball.instance()
-	inst.set_pos(Player.get_pos())
+	inst.set_pos(Vector2(Player.get_pos().x, Player.get_pos().y + 7.5))
 	Walls.add_child(inst)

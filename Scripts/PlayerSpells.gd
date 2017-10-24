@@ -1,0 +1,14 @@
+extends "NodeReference.gd"
+
+var Shield
+
+func _ready():
+	Shield = Player.get_node("Shield")
+	set_process_input(true)
+	
+func _input(event):
+	if (event.is_action_pressed("key_shield")):
+		if (Shield.is_visible()):
+			Shield.hide()
+		else:
+			Shield.show()

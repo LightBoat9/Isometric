@@ -1,13 +1,30 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://Scripts/EnemySlime.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/SlimeStateMachine.gd" type="Script" id=2]
-[ext_resource path="res://Textures/Enemies/slime.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Enemies/slime/jump/0.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Enemies/slime/jump/1.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Enemies/slime/jump/2.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Enemies/slime/jump/3.png" type="Texture" id=6]
+[ext_resource path="res://Textures/Enemies/slime/jump/4.png" type="Texture" id=7]
+[ext_resource path="res://Textures/Enemies/slime/jump/5.png" type="Texture" id=8]
+[ext_resource path="res://Textures/Enemies/slime_hp_bar1.png" type="Texture" id=9]
+[ext_resource path="res://Textures/Enemies/slime_hp_bar3.png" type="Texture" id=10]
+[ext_resource path="res://Textures/Enemies/slime_hp_bar2.png" type="Texture" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 8.0
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 10.0
+} ]
 
 [node name="EnemySlime" type="KinematicBody2D"]
 
@@ -24,9 +41,12 @@ script/script = ExtResource( 1 )
 
 script/script = ExtResource( 2 )
 
-[node name="SlimeSprite" type="Sprite" parent="."]
+[node name="SlimeSprite" type="AnimatedSprite" parent="."]
 
-texture = ExtResource( 3 )
+frames = SubResource( 2 )
+animation = "Jump"
+frame = 2
+playing = true
 centered = false
 
 [node name="SlimeCollision" type="CollisionShape2D" parent="."]
@@ -35,5 +55,27 @@ transform/pos = Vector2( 16, 22.5 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="HPBar" type="Node2D" parent="."]
+
+visibility/visible = false
+
+[node name="HPTop" type="Sprite" parent="HPBar"]
+
+transform/pos = Vector2( 7, 14 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="HPBot" type="Sprite" parent="HPBar"]
+
+transform/pos = Vector2( 7, 14 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="HPMid" type="Sprite" parent="HPBar"]
+
+transform/pos = Vector2( 7, 14 )
+texture = ExtResource( 11 )
+centered = false
 
 

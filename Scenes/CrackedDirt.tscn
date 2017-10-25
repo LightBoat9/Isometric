@@ -6,7 +6,7 @@
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, 0, 15, 7.5, 0, 15, -15, 7.5 )
+points = Vector2Array( 0, -15, 15, -7.5, 15, 7.5, 0, 15, -15, 7.5, -15, -7.5 )
 
 [node name="CrackedDirt" type="KinematicBody2D"]
 
@@ -28,7 +28,7 @@ centered = false
 
 transform/pos = Vector2( 15, 15 )
 build_mode = 0
-polygon = Vector2Array( 0, 0, 15, 7.5, 0, 15, -15, 7.5 )
+polygon = Vector2Array( 0, -15, 15, -7.5, 15, 7.5, 0, 15, -15, 7.5, -15, -7.5 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 

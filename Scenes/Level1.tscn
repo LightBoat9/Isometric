@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Math.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/CrackedDirt.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/EnemySlime.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/NPCs/NPCDarrell.tscn" type="PackedScene" id=9]
 
 [node name="Level1" type="Node2D"]
 
@@ -81,7 +82,7 @@ tile_data = IntArray( -3407890, 0, -3407889, 0, -3407888, 0, -3407887, 0, -34078
 
 [node name="Player" parent="Walls" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 0, -112 )
+transform/pos = Vector2( -30, -118 )
 collision/layers = 254
 collision/mask = 254
 
@@ -116,5 +117,9 @@ transform/pos = Vector2( 660, -440 )
 [node name="EnemySlime3" parent="Walls" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 555, -488 )
+
+[node name="NPCDarrell" parent="Walls" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 14, -211 )
 
 

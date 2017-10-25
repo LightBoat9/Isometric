@@ -3,6 +3,8 @@ extends "Enemy.gd"
 onready var SlimeState = get_node("SlimeState")
 onready var HPBar = get_node("HPBar")
 onready var HPMid = get_node("HPBar/HPMid")
+
+var DestroyParticles = load("res://Scenes/SlimeParticles.tscn")
 	
 var agro_range = 200
 	
@@ -28,5 +30,12 @@ func damage(value):
 	update_hp_bar()
 	
 func destroy():
+	spawn_particles()
 	drop_coin()
 	queue_free()
+	
+func spawn_particles():
+	var inst = DestroyParticles.instance()
+	inst.set_emitting(true)
+	inst.set_pos(get_pos())
+	Walls.add_child(inst)

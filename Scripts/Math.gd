@@ -2,9 +2,15 @@ extends Node
 
 func addv(vec, num):
 	return Vector2(vec.x + num, vec.y + num)
+	
+func subv(vec, num):
+	return Vector2(vec.x - num, vec.y - num)
 
 func point_directionv(a, b):
 	return Vector2(b.x - a.x, b.y - a.y)
+	
+func point_direction(x1, y1, x2, y2):
+	return Vector2(x2 - x1, y2 - y1)
 
 func angle_to_vector(angle):
 	return Vector2(cos(angle), -sin(angle))

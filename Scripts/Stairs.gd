@@ -11,7 +11,7 @@ func _ready():
 
 func player_enter(body):
 	if (body != Player): return
-	get_node("/root/global").goto_scene("res://Scenes/Level2.tscn")
+	get_node("/root/Global").goto_scene("res://Scenes/Level2.tscn")
 
 func player_exit(body):
 	if (body != Player): return

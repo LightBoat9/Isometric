@@ -6,6 +6,7 @@ func _ready():
 	PlayerSprites.connect("finished", self, "animation_end")
 	
 func animation_end():
+	if (PlayerStateMachine.current_state == "menu"): return
 	if (Inputs.mouse_left):
 		fireball_attack()
 	

@@ -49,7 +49,9 @@ collision/mask = 2
 occluder/light_mask = 1
 tile_data = IntArray(  )
 
-[node name="Walls" type="TileMap" parent="."]
+[node name="Walls" type="TileMap" parent="." groups=[
+"Wall",
+]]
 
 mode = 1
 tile_set = ExtResource( 3 )

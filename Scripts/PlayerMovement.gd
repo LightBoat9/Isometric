@@ -8,11 +8,8 @@ var remainder
 
 # Updates when not zero
 var direction = Vector2() setget , get_direction
-
-func _ready():
-	set_process(true)
 	
-func _process(delta):
+func update():
 	_velocity_from_input()
 	_set_direction(velocity)
 	remainder = Player.move(velocity)

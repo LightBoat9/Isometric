@@ -56,7 +56,6 @@ centered = false
 
 frames = SubResource( 2 )
 animation = "Jump"
-frame = 4
 playing = true
 centered = false
 

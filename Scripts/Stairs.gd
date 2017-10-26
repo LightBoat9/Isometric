@@ -1,3 +1,4 @@
+# The entrance to the next level
 extends "NodeReference.gd"
 
 onready var MouseArea = get_node("MouseArea")

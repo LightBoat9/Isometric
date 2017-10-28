@@ -8,7 +8,8 @@ var explode_particles = load("res://Player/Spells/ExplodeParticles.tscn")
 var velocity = Vector2()
 var speed = 200
 
-var damage = 0.5
+# Slightly more than 1/3 so it doesn't take more than 3 hits
+var damage = 0.34
 
 var lifetime = 0.5
 var life_timer

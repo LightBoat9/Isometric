@@ -1,16 +1,14 @@
 [gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://Tilesets/Breakable.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Tilesets/Basic/Textures/WeakDirt/0.png" type="Texture" id=2]
-
-
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 0, -15, 15, -7.5, 15, 7.5, 0, 15, -15, 7.5, -15, -7.5 )
 
-[node name="CrackedDirt" type="KinematicBody2D"]
+[node name="WeakDirt" type="KinematicBody2D"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )

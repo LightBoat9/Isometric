@@ -5,14 +5,9 @@
 [ext_resource path="res://Dialogue/TextBox/textboxfront.png" type="Texture" id=3]
 [ext_resource path="res://Dialogue/TextBox/textfont.tres" type="DynamicFont" id=4]
 
-
-
-
-
-
-
 [node name="TextBox" type="CanvasLayer"]
 
+process/pause_mode = 2
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -52,5 +47,12 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="LetterTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.05
+one_shot = false
+autostart = true
 
 

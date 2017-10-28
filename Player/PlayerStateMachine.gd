@@ -21,6 +21,6 @@ func move_update():
 	
 	PlayerMovement.update()
 
-func menu_enter(): pass
-func menu_exit(): pass
+func menu_enter(): get_tree().set_pause(true)
+func menu_exit(): get_tree().set_pause(false)
 func menu_update(): pass

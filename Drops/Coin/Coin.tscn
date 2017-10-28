@@ -1,15 +1,24 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Drops/Coin/Coin.gd" type="Script" id=1]
-[ext_resource path="res://Drops/Coin/coin.png" type="Texture" id=2]
+[ext_resource path="res://Drops/Coin/Textures/0.png" type="Texture" id=2]
+[ext_resource path="res://Drops/Coin/Textures/1.png" type="Texture" id=3]
+[ext_resource path="res://Drops/Coin/Textures/2.png" type="Texture" id=4]
+[ext_resource path="res://Drops/Coin/Textures/3.png" type="Texture" id=5]
 
+[sub_resource type="SpriteFrames" id=2]
 
-
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Float",
+"speed": 8.0
+} ]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 5.0
+radius = 4.0
 
 [node name="Coin" type="KinematicBody2D"]
 
@@ -19,17 +28,20 @@ collision/mask = 3
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 
-[node name="CoinSprite" type="Sprite" parent="."]
+[node name="CoinSprite" type="AnimatedSprite" parent="."]
 
-transform/pos = Vector2( 15, 15 )
-texture = ExtResource( 2 )
+frames = SubResource( 2 )
+animation = "Float"
+frame = 3
+playing = true
 centered = false
+offset = Vector2( 15, 15 )
 
 [node name="CoinArea" type="Area2D" parent="."]
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 19.5, 18 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 17, 17 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -40,7 +52,7 @@ collision/mask = 3
 
 [node name="AreaCollision" type="CollisionShape2D" parent="CoinArea"]
 
-transform/pos = Vector2( 19.5, 18 )
+transform/pos = Vector2( 17, 17 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0

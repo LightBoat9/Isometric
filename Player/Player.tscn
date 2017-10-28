@@ -33,6 +33,7 @@ animations = [ {
 
 [node name="Player" type="KinematicBody2D"]
 
+process/pause_mode = 2
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 15, 22.5 )
@@ -89,6 +90,7 @@ centered = false
 
 frames = SubResource( 2 )
 animation = "Float"
+frame = 1
 playing = true
 centered = false
 

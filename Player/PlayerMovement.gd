@@ -1,7 +1,7 @@
 extends "res://References/NodeReference.gd"
 
 var movespeed = 10
-var max_speed = 1
+var max_speed = 1.0
 
 var velocity = Vector2() setget , get_velocity
 var remainder
@@ -12,6 +12,7 @@ var direction = Vector2() setget , get_direction
 func update():
 	_velocity_from_input()
 	_set_direction(velocity)
+	print(velocity)
 	remainder = Player.move(velocity)
 	_collision()
 	
@@ -19,14 +20,18 @@ func update():
 func _velocity_from_input():
 	var h = Inputs.key_right - Inputs.key_left
 	var v = Inputs.key_down - Inputs.key_up
-	if (h != 0):
+	if (h != 0 && v != 0):
 		velocity.x = lerp(velocity.x, max_speed * h, movespeed * get_process_delta_time())
+		velocity.y = lerp(velocity.y, max_speed * v/2, movespeed * get_process_delta_time())
 	else:
-		velocity.x = lerp(velocity.x, 0, movespeed * get_process_delta_time())
-	if (v != 0):
-		velocity.y = lerp(velocity.y, max_speed * v, movespeed * get_process_delta_time())
-	else:
-		velocity.y = lerp(velocity.y, 0, movespeed * get_process_delta_time())
+		if (h != 0):
+			velocity.x = lerp(velocity.x, max_speed * h, movespeed * get_process_delta_time())
+		else:
+			velocity.x = lerp(velocity.x, 0, movespeed * get_process_delta_time())
+		if (v != 0):
+			velocity.y = lerp(velocity.y, max_speed * v, movespeed * get_process_delta_time())
+		else:
+			velocity.y = lerp(velocity.y, 0, movespeed * get_process_delta_time())
 	
 func _collision():
 	if (Player.is_colliding()):

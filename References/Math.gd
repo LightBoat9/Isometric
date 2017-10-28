@@ -14,6 +14,10 @@ func point_direction(x1, y1, x2, y2):
 
 func angle_to_vector(angle):
 	return Vector2(cos(angle), -sin(angle))
+	
+func rand_rangev(vmin, vmax):
+	randomize()
+	return Vector2(rand_range(vmin, vmax), rand_range(vmin, vmax))
 
 func choose(a, b):
 	randomize()

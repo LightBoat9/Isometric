@@ -2,22 +2,22 @@ extends "res://References/NodeReference.gd"
 
 onready var Picture = get_node("Picture")
 onready var Text = get_node("Text")
+onready var LetterTimer = get_node("LetterTimer")
 
-var Parent
-
-var letter_timer
-var letter_speed = 0.05
+var Creator
 
 var text = "" setget set_text, get_text
 var text_array = []
 var text_index = 0
 var text_done = false
 
-func init(par, array):
+func _ready():
+	LetterTimer.connect("timeout", self, "add_letter")
+	
+func init(Creator, text_array):
 	Text.set_text("")
-	Parent = par
-	text_array = array
-	_create_letter_timer()
+	self.Creator = Creator
+	self.text_array = text_array
 	set_process_input(true)
 	
 func _input(event):
@@ -35,13 +35,6 @@ func set_picture(pic):
 	Picture.set_scale(Vector2(3, 3))
 	Picture.set_pos(Vector2(-Picture.get_texture().get_size().x / 2, Picture.get_texture().get_size().y / 6))
 	
-func _create_letter_timer():
-	var inst = Timer.new()
-	inst.set_wait_time(letter_speed)
-	inst.connect("timeout", self, "add_letter")
-	inst.start()
-	add_child(inst)
-	
 func add_letter():
 	if (text_array[text_index].length() == text.length()):
 		text_done = true
@@ -57,8 +50,8 @@ func get_text():
 	
 func complete():
 	PlayerStateMachine.current_state = PlayerStateMachine.last_state
-	Parent.text_box = null
-	Parent.dialogue_read()
+	Creator.text_box = null
+	Creator.dialogue_read()
 	text = ""
 	text_index = 0
 	text_done = false

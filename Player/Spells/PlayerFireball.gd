@@ -39,7 +39,7 @@ func collision(body):
 	if (body.is_in_group("Wall")):
 		destroy()
 	elif (body.is_in_group("Enemies")):
-		body.damage(damage)
+		body.damage(damage, velocity.normalized())
 		destroy()
 	
 func destroy():

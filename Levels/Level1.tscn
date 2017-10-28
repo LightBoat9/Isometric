@@ -115,4 +115,20 @@ flip_h = true
 
 transform/pos = Vector2( 24.9999, -128.999 )
 
+[node name="EnemySlime1" parent="Walls" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 16.7094, -164.599 )
+
+[node name="EnemySlime2" parent="Walls" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 68.4029, -159.235 )
+
+[node name="EnemySlime3" parent="Walls" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 46.4576, -183.619 )
+
+[node name="EnemySlime4" parent="Walls" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 81.5702, -191.421 )
+
 

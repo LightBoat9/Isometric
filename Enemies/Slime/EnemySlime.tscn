@@ -14,18 +14,6 @@
 [ext_resource path="res://Enemies/Slime/Textures/HPBar/2.png" type="Texture" id=12]
 [ext_resource path="res://Enemies/Slime/Textures/HPBar/1.png" type="Texture" id=13]
 
-
-
-
-
-
-
-
-
-
-
-
-
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -59,15 +47,16 @@ script/script = ExtResource( 2 )
 
 script/script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="SlimeShadow" type="Sprite" parent="."]
 
 texture = ExtResource( 4 )
 centered = false
 
-[node name="SlimeSprite" type="AnimatedSprite" parent="."]
+[node name="SlimeSprites" type="AnimatedSprite" parent="."]
 
 frames = SubResource( 2 )
 animation = "Jump"
+frame = 3
 playing = true
 centered = false
 
@@ -80,6 +69,7 @@ _update_shape_index = 0
 
 [node name="HPBar" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 
 [node name="HPTop" type="Sprite" parent="HPBar"]
@@ -99,5 +89,12 @@ centered = false
 transform/pos = Vector2( 7, 14 )
 texture = ExtResource( 13 )
 centered = false
+
+[node name="ModTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.05
+one_shot = true
+autostart = false
 
 

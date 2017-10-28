@@ -9,7 +9,7 @@ var Heart = load("res://Player/HUD/Textures/Heart/0.png")
 
 var invin = false
 var invin_timer
-var invin_amount = 1
+var invin_amount = 2.0
 var blink_timer
 var blink_rate = 0.1
 
@@ -56,11 +56,12 @@ func update():
 	for i in range(hp):
 		heart_array[i].show()
 	
-func damage(hp):
+func damage(amount, knockback_dir):
 	if (invin): return
 	invin = true
 	invin_timer.start()
 	blink_timer.start()
-	if (self.hp - hp >= 0): self.hp -= hp
+	PlayerMovement.knock_back(knockback_dir, 4)
+	if (hp - amount >= 0): hp -= amount
 	else: hp = 0
 	update()

@@ -4,15 +4,18 @@ extends "res://References/NodeReference.gd"
 onready var EnemySlime = get_parent()
 
 var velocity = Vector2()
-var movespeed = 40
+var remainder = Vector2()
+var movespeed = 5
+var max_speed = 0.5
 
 var damage = 1
 
 func update():
-	velocity = (Math.point_directionv(
+	var player_dir = (Math.point_directionv(
 		EnemySlime.get_pos(), Player.get_pos()).normalized())
-	velocity = velocity * movespeed * get_process_delta_time()
-	velocity = EnemySlime.move(velocity)
+	velocity.x = lerp(velocity.x, max_speed * sign(player_dir.x), movespeed * get_process_delta_time())
+	velocity.y = lerp(velocity.y, max_speed * sign(player_dir.y), movespeed * get_process_delta_time())
+	remainder = EnemySlime.move(velocity)
 	if (EnemySlime.is_colliding()):
 		_damage_player()
 		_slide_on_walls()
@@ -21,9 +24,10 @@ func _damage_player():
 	var c = EnemySlime.get_collider()
 	if (c == null): return
 	if (c == Player):
-		PlayerHP.damage(damage)
+		# Pass in velocity to handle knockback
+		PlayerHP.damage(damage, velocity.normalized()) 
 		
 func _slide_on_walls():
 	var n = EnemySlime.get_collision_normal()
-	velocity = n.slide(velocity)
-	EnemySlime.move(velocity)
+	remainder = n.slide(remainder)
+	EnemySlime.move(remainder)

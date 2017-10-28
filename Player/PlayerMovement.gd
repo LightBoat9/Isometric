@@ -23,7 +23,6 @@ func _velocity_from_input():
 		velocity.x = lerp(velocity.x, max_speed * h, movespeed * get_process_delta_time())
 	else:
 		velocity.x = lerp(velocity.x, 0, movespeed * get_process_delta_time())
-			
 	if (v != 0):
 		velocity.y = lerp(velocity.y, max_speed * v, movespeed * get_process_delta_time())
 	else:
@@ -40,6 +39,9 @@ func _collision():
 	
 func get_velocity():
 	return velocity
+	
+func knock_back(dir, force):
+	velocity = dir * force
 	
 func _set_direction(value):
 	if (value.x != 0): direction.x = sign(value.x)

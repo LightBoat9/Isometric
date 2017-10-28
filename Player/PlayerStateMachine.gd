@@ -10,6 +10,8 @@ func idle_update():
 		Inputs.key_up || Inputs.key_down):
 		set_current_state("move")
 		
+	PlayerMovement.update()
+		
 func move_enter(): pass
 func move_exit(): pass
 func move_update():

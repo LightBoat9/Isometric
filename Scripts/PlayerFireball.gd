@@ -30,7 +30,7 @@ func _start_velocity():
 	velocity = Math.point_directionv(
 		Math.addv(get_pos(), 15), 
 		FireballSprite.get_global_mouse_pos()).normalized()
-	velocity = velocity * speed * get_process_delta_time()
+	velocity = velocity * speed * get_fixed_process_delta_time()
 	
 func _process(delta):
 	move(velocity)

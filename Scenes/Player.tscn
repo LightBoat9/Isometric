@@ -3,17 +3,17 @@
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PlayerStateMachine.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/PlayerHP.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/PlayerCamera.gd" type="Script" id=4]
-[ext_resource path="res://Textures/Player/shadow.png" type="Texture" id=5]
-[ext_resource path="res://Textures/Player/Float/0.png" type="Texture" id=6]
-[ext_resource path="res://Textures/Player/Float/1.png" type="Texture" id=7]
-[ext_resource path="res://Textures/Player/Float/2.png" type="Texture" id=8]
-[ext_resource path="res://Textures/Player/Float/3.png" type="Texture" id=9]
-[ext_resource path="res://Textures/Player/Float/4.png" type="Texture" id=10]
-[ext_resource path="res://Textures/Player/Float/5.png" type="Texture" id=11]
-[ext_resource path="res://Scripts/PlayerGraphics.gd" type="Script" id=12]
-[ext_resource path="res://Scripts/PlayerMovement.gd" type="Script" id=13]
-[ext_resource path="res://Scripts/PlayerAttack.gd" type="Script" id=14]
+[ext_resource path="res://Scenes/Spells.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/PlayerCamera.gd" type="Script" id=5]
+[ext_resource path="res://Textures/Player/shadow.png" type="Texture" id=6]
+[ext_resource path="res://Textures/Player/Float/0.png" type="Texture" id=7]
+[ext_resource path="res://Textures/Player/Float/1.png" type="Texture" id=8]
+[ext_resource path="res://Textures/Player/Float/2.png" type="Texture" id=9]
+[ext_resource path="res://Textures/Player/Float/3.png" type="Texture" id=10]
+[ext_resource path="res://Textures/Player/Float/4.png" type="Texture" id=11]
+[ext_resource path="res://Textures/Player/Float/5.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/PlayerGraphics.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/PlayerMovement.gd" type="Script" id=14]
 [ext_resource path="res://Scripts/PlayerSpells.gd" type="Script" id=15]
 [ext_resource path="res://Textures/Player/shield.png" type="Texture" id=16]
 
@@ -25,7 +25,7 @@ radius = 3.75
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "Float",
 "speed": 8.0
@@ -57,6 +57,8 @@ scale = Vector2( 1, 1 )
 
 script/script = ExtResource( 3 )
 
+[node name="Spells" parent="HUD" instance=ExtResource( 4 )]
+
 [node name="PlayerCamera" type="Camera2D" parent="."]
 
 offset = Vector2( 15, 15 )
@@ -76,18 +78,18 @@ drag_margin/left = 0.0
 drag_margin/top = 0.0
 drag_margin/right = 0.0
 drag_margin/bottom = 0.0
-script/script = ExtResource( 4 )
+script/script = ExtResource( 5 )
 
 [node name="PlayerShadow" type="Sprite" parent="."]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 centered = false
 
 [node name="PlayerSprites" type="AnimatedSprite" parent="."]
 
 frames = SubResource( 2 )
 animation = "Float"
-frame = 3
+frame = 4
 playing = true
 centered = false
 
@@ -100,13 +102,9 @@ _update_shape_index = 0
 
 [node name="PlayerGraphics" type="Node" parent="."]
 
-script/script = ExtResource( 12 )
-
-[node name="PlayerMovement" type="Node" parent="."]
-
 script/script = ExtResource( 13 )
 
-[node name="PlayerAttack" type="Node" parent="."]
+[node name="PlayerMovement" type="Node" parent="."]
 
 script/script = ExtResource( 14 )
 

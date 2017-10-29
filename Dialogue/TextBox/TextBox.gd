@@ -27,8 +27,14 @@ func _input(event):
 				text_index += 1
 				text = ""
 				text_done = false
-			else: complete()
-	if (event.is_action_pressed("key_escape")): complete()
+			else: complete(true)
+		else:
+			text = ""
+			for i in text_array[text_index]:
+				text += i
+			Text.set_text(text)
+			text_done = true
+	if (event.is_action_pressed("key_escape")): complete(false)
 
 func set_picture(pic):
 	Picture.set_texture(pic)
@@ -48,10 +54,10 @@ func set_text(value):
 func get_text():
 	return text
 	
-func complete():
+func complete(is_done):
 	PlayerStateMachine.current_state = PlayerStateMachine.last_state
 	Creator.text_box = null
-	Creator.dialogue_read()
+	if (is_done): Creator.dialogue_read()
 	text = ""
 	text_index = 0
 	text_done = false

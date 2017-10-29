@@ -1,6 +1,7 @@
 extends "res://References/NodeReference.gd"
 
-onready var CoinArea = get_node("CoinArea")
+onready var DropArea = get_node("DropArea")
+onready var ItemSprite = get_node("ItemSprite")
 
 var velocity = Vector2()
 var remainder = Vector2()
@@ -8,9 +9,11 @@ var remainder = Vector2()
 var movespeed = 8
 var max_speed = 1.5
 
+var slot_size = Vector2(24, 24)
+export var item_index = -1 setget set_item_index, get_item_index
+
 func _ready():
-	set_random_velocity()
-	CoinArea.connect("body_enter", self, "collect")
+	DropArea.connect("body_enter", self, "collect")
 	set_process(true)
 	
 func _process(delta):
@@ -18,13 +21,11 @@ func _process(delta):
 		move_to_player()
 	else:
 		stop_movement()
-		
-func set_random_velocity():
-	velocity = Math.rand_rangev(-2, 2)
 	
 func collect(body):
 	if (body == Player):
 		queue_free()
+		PlayerInventory.add_item(item_index)
 
 func move_to_player():
 	var player_dir = (Math.point_directionv(
@@ -51,3 +52,20 @@ func _slide_on_walls():
 	var n = get_collision_normal()
 	remainder = n.slide(remainder)
 	move(remainder)
+	
+func set_item_index(value):
+	item_index = value
+	update_item()
+
+func get_item_index():
+	return item_index
+
+func update_item():
+	if (ItemSprite == null): return
+	if (item_index == -1):
+		ItemSprite.hide()
+	else:
+		ItemSprite.show()
+		ItemSprite.set_region_rect(
+			Rect2(Vector2((item_index % 10) * 28, (item_index / 10) * 28), 
+				slot_size))

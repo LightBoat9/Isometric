@@ -1,11 +1,9 @@
 extends "res://References/NodeReference.gd"
 
-onready var ExplodeParticles = get_node("Particles2D")
-
 var free_timer
 
 func _ready():
-	ExplodeParticles.set_emitting(true)
+	set_emitting(true)
 	initialize_free_timer()
 	
 func initialize_free_timer():

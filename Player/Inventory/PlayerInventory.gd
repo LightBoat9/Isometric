@@ -6,13 +6,21 @@ var slot_array = []
 var slot_size = 28
 var slot_space = 4
 
+var item_num = 0
+var max_item_num = 25
+
 func _ready():
-	for i1 in range(5):
-		for i2 in range(5):
+	var inventory_start = Vector2(268, 64)
+	for y in range(5):
+		for x in range(5):
 			var inst = Slot.instance()
 			var offset = slot_size + slot_space
-			inst.set_pos(Vector2(offset * i1, offset * i2))
+			inst.set_pos(Vector2(inventory_start.x + offset * x,
+				inventory_start.y + offset * y))
 			add_child(inst)
 			slot_array.append(inst)
 			
-	slot_array[0].set_item_index(0)
+func add_item(index):
+	if (item_num < max_item_num):
+		slot_array[item_num].set_item_index(index)
+		item_num += 1

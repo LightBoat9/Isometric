@@ -3,6 +3,7 @@ extends Node
 var current_scene
 
 func _ready():
+	set_pause_mode(PAUSE_MODE_PROCESS)
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
 	set_process_input(true)

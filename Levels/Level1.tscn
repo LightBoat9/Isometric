@@ -5,7 +5,7 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Tilesets/Dynamic/WeakDirt/WeakDirt.tscn" type="PackedScene" id=4]
 [ext_resource path="res://NPCs/Darrell/NPCDarrell.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Tilesets/Basic/Textures/Chest/0.png" type="Texture" id=6]
+[ext_resource path="res://Drops/ItemDrop.tscn" type="PackedScene" id=6]
 
 [node name="Level1" type="Node2D"]
 
@@ -71,7 +71,7 @@ tile_data = IntArray( -3407890, 0, -3407889, 0, -3407888, 0, -3407887, 0, -34078
 
 [node name="Player" parent="Walls" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( -30, -118 )
+transform/pos = Vector2( -60.3147, -98.7434 )
 collision/layers = 254
 collision/mask = 254
 
@@ -91,15 +91,69 @@ transform/pos = Vector2( 495, -375 )
 
 transform/pos = Vector2( 510, -367.5 )
 
+[node name="WeakDirt5" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 525, -495 )
+
+[node name="WeakDirt6" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 510, -487.5 )
+
+[node name="WeakDirt7" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 540, -487.5 )
+
+[node name="WeakDirt8" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 525, -480 )
+
+[node name="WeakDirt9" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 645, -420 )
+
+[node name="WeakDirt10" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 660, -412.5 )
+
+[node name="WeakDirt11" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 645, -405 )
+
+[node name="WeakDirt12" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 645, -360 )
+
+[node name="WeakDirt13" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 585, -405 )
+
+[node name="WeakDirt14" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 705, -405 )
+
+[node name="WeakDirt15" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 630, -412.5 )
+
+[node name="WeakDirt16" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 585, -450 )
+
+[node name="WeakDirt17" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 465, -465 )
+
+[node name="WeakDirt18" parent="Walls" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 480, -457.5 )
+
 [node name="NPCDarrell" parent="Walls" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 14, -211 )
 
-[node name="placeholder" type="Sprite" parent="Walls"]
+[node name="FireballScroll" parent="Walls" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 225, -360 )
-texture = ExtResource( 6 )
-centered = false
-flip_h = true
+transform/pos = Vector2( 240, -360 )
+item_index = 0
 
 

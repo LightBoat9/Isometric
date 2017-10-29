@@ -9,7 +9,7 @@
 [ext_resource path="res://Inventory/Information/Textures/Button/0.png" type="Texture" id=7]
 [ext_resource path="res://yoster.ttf" type="DynamicFontData" id=8]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 
 font/size = 12
 font/use_mipmaps = false
@@ -87,7 +87,7 @@ margin/left = 2.0
 margin/top = 10.0
 margin/right = 149.0
 margin/bottom = 23.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0.398438, 1, 1 )
 text = "Type"
 autowrap = true
@@ -107,7 +107,7 @@ margin/left = 2.0
 margin/top = 20.0
 margin/right = 150.0
 margin/bottom = 104.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Description"
 autowrap = true

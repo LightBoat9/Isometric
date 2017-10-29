@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://Drops/Drop.gd" type="Script" id=1]
+[ext_resource path="res://Inventory/Items/Textures/0.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
+
+[node name="ItemDrop" type="KinematicBody2D"]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+item_index = -1
+
+[node name="ItemSprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 28, 28 )
+
+[node name="DropArea" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 14, 14 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 2
+
+[node name="AreaCollision" type="CollisionShape2D" parent="DropArea"]
+
+transform/pos = Vector2( 14, 14 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+

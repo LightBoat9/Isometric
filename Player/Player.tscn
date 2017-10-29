@@ -64,7 +64,6 @@ script/script = ExtResource( 3 )
 [node name="PlayerInventory" parent="HUD" instance=ExtResource( 5 )]
 
 visibility/visible = false
-transform/pos = Vector2( 75, 60 )
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 
@@ -96,7 +95,7 @@ centered = false
 
 frames = SubResource( 2 )
 animation = "Float"
-frame = 4
+frame = 3
 playing = true
 centered = false
 

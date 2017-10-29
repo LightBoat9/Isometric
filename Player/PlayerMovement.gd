@@ -12,7 +12,6 @@ var direction = Vector2() setget , get_direction
 func update():
 	_velocity_from_input()
 	_set_direction(velocity)
-	print(velocity)
 	remainder = Player.move(velocity)
 	_collision()
 	

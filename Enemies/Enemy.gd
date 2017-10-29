@@ -16,4 +16,4 @@ func drop_coin(amount):
 	for i in range(amount):
 		var inst = Coin.instance()
 		inst.set_pos(get_pos())
-		Coins.add_child(inst)
+		Walls.add_child(inst)

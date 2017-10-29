@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Tilesets/Basic/Basic.tres" type="TileSet" id=1]
 [ext_resource path="res://Tilesets/Dynamic/Stairs/Stairs.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Drops/Coin/Coin.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Tilesets/Dynamic/WeakDirt/WeakDirt.tscn" type="PackedScene" id=5]
-[ext_resource path="res://NPCs/Darrell/NPCDarrell.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Tilesets/Basic/Textures/Chest/0.png" type="Texture" id=7]
-[ext_resource path="res://Enemies/Slime/EnemySlime.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tilesets/Dynamic/WeakDirt/WeakDirt.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NPCs/Darrell/NPCDarrell.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Tilesets/Basic/Textures/Chest/0.png" type="Texture" id=6]
 
 [node name="Level1" type="Node2D"]
 
@@ -51,12 +49,6 @@ tile_data = IntArray( -3276810, 2, -3211274, 2, -3211273, 2, -3211272, 2, -32112
 
 transform/pos = Vector2( 525, -480 )
 
-[node name="Coins" type="Node2D" parent="."]
-
-[node name="Coin" parent="Coins" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( -147.82, -120.603 )
-
 [node name="Walls" type="TileMap" parent="." groups=[
 "Wall",
 ]]
@@ -77,41 +69,37 @@ collision/mask = 2
 occluder/light_mask = 1
 tile_data = IntArray( -3407890, 0, -3407889, 0, -3407888, 0, -3407887, 0, -3407886, 0, -3407885, 0, -3407884, 0, -3407883, 0, -3407882, 0, -3407881, 0, -3407880, 0, -3407879, 0, -3407878, 0, -3407877, 0, -3407876, 0, -3407875, 0, -3407874, 0, -3407873, 0, -3473408, 0, -3473407, 0, -3342354, 0, -3407871, 0, -3276818, 0, -3342335, 0, -3211282, 0, -3276799, 0, -3145746, 0, -3211263, 0, -3080210, 0, -3145727, 0, -3014674, 0, -3080191, 0, -2949138, 0, -3014655, 0, -2883602, 0, -2949119, 0, -2818066, 0, -2818065, 0, -2818064, 0, -2818063, 0, -2818062, 0, -2818061, 0, -2818060, 0, -2818059, 0, -2883583, 0, -2752523, 0, -2752518, 0, -2752517, 0, -2752516, 0, -2752515, 0, -2752514, 0, -2752513, 0, -2818048, 0, -2818047, 0, -2686987, 0, -2686982, 0, -2621451, 0, -2621446, 0, -2555915, 0, -2555910, 0, -2490379, 0, -2490374, 0, -2424843, 0, -2424838, 0, -2359307, 0, -2359302, 0, -2293771, 0, -2293766, 0, -2228241, 0, -2228240, 0, -2228239, 0, -2228238, 0, -2228235, 0, -2228230, 0, -2162705, 0, -2162702, 0, -2162701, 0, -2162700, 0, -2162699, 0, -2162694, 0, -2097169, 0, -2097158, 0, -2031633, 0, -2031622, 0, -1966097, 0, -1966086, 0, -1900561, 0, -1900558, 0, -1900557, 0, -1900556, 0, -1900555, 0, -1900550, 0, -1835025, 0, -1835024, 0, -1835023, 0, -1835022, 0, -1835019, 0, -1835014, 0, -1769483, 0, -1769478, 0, -1703947, 0, -1703942, 0, -1638411, 0, -1638406, 0, -1572875, 0, -1572870, 0, -1507339, 0, -1507334, 0, -1441803, 0, -1441798, 0, -1376267, 0, -1376262, 0, -1310731, 0, -1310726, 0, -1245195, 0, -1245190, 0, -1179659, 0, -1179654, 0, -1114123, 0, -1114118, 0, -1048587, 0, -1048582, 0, -983054, 0, -983053, 0, -983052, 0, -983051, 0, -983046, 0, -983045, 0, -983044, 0, -983043, 0, -983042, 0, -917518, 0, -917506, 0, -851982, 0, -851970, 0, -786446, 0, -786434, 0, -720910, 0, -720898, 0, -655374, 0, -655362, 0, -589838, 0, -589826, 0, -524302, 0, -524290, 0, -458766, 0, -458754, 0, -393230, 0, -393218, 0, -327694, 0, -327682, 0, -262158, 0, -262146, 0, -196622, 0, -196610, 0, -131086, 0, -131074, 0, -65550, 0, -65549, 0, -65548, 0, -65547, 0, -65546, 0, -65545, 0, -65544, 0, -65543, 0, -65542, 0, -65541, 0, -65540, 0, -65539, 0, -65538, 0 )
 
-[node name="Player" parent="Walls" instance=ExtResource( 4 )]
+[node name="Player" parent="Walls" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -30, -118 )
 collision/layers = 254
 collision/mask = 254
 
-[node name="WeakDirt1" parent="Walls" instance=ExtResource( 5 )]
+[node name="WeakDirt1" parent="Walls" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 465, -390 )
 
-[node name="WeakDirt2" parent="Walls" instance=ExtResource( 5 )]
+[node name="WeakDirt2" parent="Walls" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 480, -382.5 )
 
-[node name="WeakDirt3" parent="Walls" instance=ExtResource( 5 )]
+[node name="WeakDirt3" parent="Walls" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 495, -375 )
 
-[node name="WeakDirt4" parent="Walls" instance=ExtResource( 5 )]
+[node name="WeakDirt4" parent="Walls" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 510, -367.5 )
 
-[node name="NPCDarrell" parent="Walls" instance=ExtResource( 6 )]
+[node name="NPCDarrell" parent="Walls" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 14, -211 )
 
 [node name="placeholder" type="Sprite" parent="Walls"]
 
 transform/pos = Vector2( 225, -360 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 centered = false
 flip_h = true
-
-[node name="EnemySlime4" parent="Walls" instance=ExtResource( 8 )]
-
-transform/pos = Vector2( 101.101, -183.15 )
 
 

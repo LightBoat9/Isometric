@@ -1,21 +1,22 @@
-[gd_scene load_steps=19 format=1]
+[gd_scene load_steps=20 format=1]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/PlayerStateMachine.gd" type="Script" id=2]
 [ext_resource path="res://Player/Spells/PlayerHP.gd" type="Script" id=3]
 [ext_resource path="res://Player/HUD/Spells.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Player/PlayerCamera.gd" type="Script" id=5]
-[ext_resource path="res://Player/Textures/Shadow/0.png" type="Texture" id=6]
-[ext_resource path="res://Player/Textures/Float/0.png" type="Texture" id=7]
-[ext_resource path="res://Player/Textures/Float/1.png" type="Texture" id=8]
-[ext_resource path="res://Player/Textures/Float/2.png" type="Texture" id=9]
-[ext_resource path="res://Player/Textures/Float/3.png" type="Texture" id=10]
-[ext_resource path="res://Player/Textures/Float/4.png" type="Texture" id=11]
-[ext_resource path="res://Player/Textures/Float/5.png" type="Texture" id=12]
-[ext_resource path="res://Player/Spells/PlayerGraphics.gd" type="Script" id=13]
-[ext_resource path="res://Player/PlayerMovement.gd" type="Script" id=14]
-[ext_resource path="res://Player/Spells/PlayerSpells.gd" type="Script" id=15]
-[ext_resource path="res://Player/Spells/Textures/Shield/0.png" type="Texture" id=16]
+[ext_resource path="res://Player/Inventory/PlayerInventory.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/PlayerCamera.gd" type="Script" id=6]
+[ext_resource path="res://Player/Textures/Shadow/0.png" type="Texture" id=7]
+[ext_resource path="res://Player/Textures/Float/0.png" type="Texture" id=8]
+[ext_resource path="res://Player/Textures/Float/1.png" type="Texture" id=9]
+[ext_resource path="res://Player/Textures/Float/2.png" type="Texture" id=10]
+[ext_resource path="res://Player/Textures/Float/3.png" type="Texture" id=11]
+[ext_resource path="res://Player/Textures/Float/4.png" type="Texture" id=12]
+[ext_resource path="res://Player/Textures/Float/5.png" type="Texture" id=13]
+[ext_resource path="res://Player/Spells/PlayerGraphics.gd" type="Script" id=14]
+[ext_resource path="res://Player/PlayerMovement.gd" type="Script" id=15]
+[ext_resource path="res://Player/Spells/PlayerSpells.gd" type="Script" id=16]
+[ext_resource path="res://Player/Spells/Textures/Shield/0.png" type="Texture" id=17]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -25,7 +26,7 @@ radius = 3.75
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "Float",
 "speed": 8.0
@@ -60,6 +61,11 @@ script/script = ExtResource( 3 )
 
 [node name="Spells" parent="HUD" instance=ExtResource( 4 )]
 
+[node name="PlayerInventory" parent="HUD" instance=ExtResource( 5 )]
+
+visibility/visible = false
+transform/pos = Vector2( 75, 60 )
+
 [node name="PlayerCamera" type="Camera2D" parent="."]
 
 offset = Vector2( 15, 15 )
@@ -79,18 +85,18 @@ drag_margin/left = 0.0
 drag_margin/top = 0.0
 drag_margin/right = 0.0
 drag_margin/bottom = 0.0
-script/script = ExtResource( 5 )
+script/script = ExtResource( 6 )
 
 [node name="PlayerShadow" type="Sprite" parent="."]
 
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 centered = false
 
 [node name="PlayerSprites" type="AnimatedSprite" parent="."]
 
 frames = SubResource( 2 )
 animation = "Float"
-frame = 1
+frame = 4
 playing = true
 centered = false
 
@@ -103,15 +109,22 @@ _update_shape_index = 0
 
 [node name="PlayerGraphics" type="Node" parent="."]
 
-script/script = ExtResource( 13 )
+script/script = ExtResource( 14 )
 
 [node name="PlayerMovement" type="Node" parent="."]
 
-script/script = ExtResource( 14 )
+script/script = ExtResource( 15 )
 
 [node name="PlayerSpells" type="Node" parent="."]
 
-script/script = ExtResource( 15 )
+script/script = ExtResource( 16 )
+
+[node name="M1Timer" type="Timer" parent="PlayerSpells"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = true
 
 [node name="Shield" type="Node2D" parent="."]
 
@@ -119,7 +132,7 @@ visibility/visible = false
 
 [node name="ShieldSprite" type="Sprite" parent="Shield"]
 
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 centered = false
 
 

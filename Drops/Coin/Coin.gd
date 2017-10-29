@@ -6,7 +6,7 @@ var velocity = Vector2()
 var remainder = Vector2()
 
 var movespeed = 8
-var max_speed = 1
+var max_speed = 1.5
 
 func _ready():
 	set_random_velocity()
@@ -14,7 +14,7 @@ func _ready():
 	set_process(true)
 	
 func _process(delta):
-	if (Math.distance_to_point(get_pos(), Player.get_pos()) < 32):
+	if (Math.distance_to_point(get_pos(), Player.get_pos()) < 48):
 		move_to_player()
 	else:
 		stop_movement()
@@ -30,9 +30,9 @@ func move_to_player():
 	var player_dir = (Math.point_directionv(
 		get_pos(), Player.get_pos()).normalized())
 		
-	velocity.x = lerp(velocity.x, max_speed * sign(player_dir.x), 
+	velocity.x = lerp(velocity.x, max_speed * player_dir.x, 
 		movespeed * get_process_delta_time())
-	velocity.y = lerp(velocity.y, max_speed * sign(player_dir.y), 
+	velocity.y = lerp(velocity.y, max_speed * player_dir.y, 
 		movespeed * get_process_delta_time())
 	
 	remainder = move(velocity)

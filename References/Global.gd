@@ -1,4 +1,4 @@
-extends Node
+extends "NodeReference.gd"
 
 var current_scene
 
@@ -7,6 +7,7 @@ func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
 	set_process_input(true)
+	load_game()
 
 func _input(event):
 	# Toggle fullscreen
@@ -21,3 +22,37 @@ func _deferred_goto_scene(path):
 	var s = ResourceLoader.load(path)
 	var current_scene = s.instance()
 	get_tree().get_root().add_child(current_scene)
+	
+func save_game():
+	# Save Dictionary
+	var data = {
+		# Player
+	}
+	
+	var file = File.new()
+	if file.open("user://saved_game.sav", File.WRITE) != 0:
+	    print("Error opening file")
+	    return
+	
+	file.store_line(data.to_json())
+	file.close()
+	
+func load_game():
+	# Find saved file
+	var file = File.new()
+	if !file.file_exists("user://saved_game.sav"):
+	    print("No file saved!")
+	    return
+	
+	# Open file
+	if file.open("user://saved_game.sav", File.READ) != 0:
+	    print("Error opening file")
+	    return
+	
+	# Get the data
+	var data = {}
+	data.parse_json(file.get_line())
+	print(data)
+	
+	for i in get_tree().get_nodes_in_group("save"):
+		i.load_game(data)

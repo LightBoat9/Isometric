@@ -13,11 +13,13 @@ func _ready():
 	
 func _input(event):
 	if (PlayerStateMachine.current_state == "menu"): return
+	"""
 	if (event.is_action_pressed("key_shield")):
 		if (Shield.is_visible()):
 			Shield.hide()
 		else:
 			Shield.show()
+	"""
 			
 func _process(delta):
 	if (PlayerStateMachine.current_state == "menu"): return
@@ -26,7 +28,7 @@ func _process(delta):
 func set_m1_active(value):
 	m1_active = value
 	
-func get_m1_active(value):
+func get_m1_active():
 	return m1_active
 	
 func use_m1():

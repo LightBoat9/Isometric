@@ -44,7 +44,7 @@ func knock_back(dir, force):
 	
 func destroy():
 	spawn_particles()
-	drop_coin(10)
+	drop_coin(5)
 	queue_free()
 	
 func spawn_particles():

@@ -1,11 +1,13 @@
 extends "res://References/NodeReference.gd"
 
-var max_hp = 3
-var hp = 3
+var max_hp = 10
+var hp = 10
 
 var heart_array = []
+var back_array = []
 
 var Heart = load("res://Player/HUD/Textures/Heart/0.png")
+var HurtHeart = load("res://Player/HUD/Textures/HurtHeart/0.png")
 
 var invin = false
 var invin_timer
@@ -52,9 +54,11 @@ func blink():
 	
 func update():
 	for i in heart_array:
-		i.hide()
+		i.set_texture(Heart)
 	for i in range(hp):
 		heart_array[i].show()
+	for i in range(10 - hp):
+		heart_array[9 - i].set_texture(HurtHeart)
 	
 func damage(amount, knockback_dir):
 	if (invin): return
@@ -64,4 +68,9 @@ func damage(amount, knockback_dir):
 	PlayerMovement.knock_back(knockback_dir, 4)
 	if (hp - amount >= 0): hp -= amount
 	else: hp = 0
+	update()
+	
+func heal(amount):
+	if (hp + amount < max_hp): hp += amount
+	else: hp = max_hp
 	update()

@@ -24,3 +24,7 @@ func move_update():
 func menu_enter(): get_tree().set_pause(true)
 func menu_exit(): get_tree().set_pause(false)
 func menu_update(): pass
+
+func inventory_enter(): pass
+func inventory_exit(): pass
+func inventory_update(): pass

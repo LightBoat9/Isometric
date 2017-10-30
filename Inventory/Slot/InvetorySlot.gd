@@ -59,9 +59,15 @@ func update_item():
 func use_item():
 	if (items_dict[Vector2(item_index, 1)] == "Key Item"):
 		call_deferred("use_key_item", items_dict[Vector2(item_index, 0)])
+	elif (items_dict[Vector2(item_index, 1)] == "Potion"):
+		call_deferred("use_potion", items_dict[Vector2(item_index, 0)])
 	
 	set_item_index(-1)
 	
 func use_key_item(name):
 	if (name == "Fireball Scroll"):
 		PlayerSpells.m1_active = true
+		
+func use_potion(name):
+	if (name == "Health Potion"):
+		PlayerHP.heal(3)

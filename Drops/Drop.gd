@@ -14,6 +14,7 @@ export var item_index = -1 setget set_item_index, get_item_index
 
 func _ready():
 	DropArea.connect("body_enter", self, "collect")
+	update_item()
 	set_process(true)
 	
 func _process(delta):

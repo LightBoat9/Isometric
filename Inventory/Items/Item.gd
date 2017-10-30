@@ -10,7 +10,11 @@ var item_index = 0 setget set_item_index, get_item_index
 # Key Items
 # Vector2(index, 3) == method_name
 
+# Potions
+# Vector2(index, 3) == item_value
+
 var items_dict = {
+	##### Scrolls
 	# Fireball Scroll (M1)
 	Vector2(0,0): "Fireball Scroll",
 	Vector2(0,1): "Key Item",
@@ -20,6 +24,11 @@ var items_dict = {
 	Vector2(1,0): "Shield Scroll",
 	Vector2(1,1): "Key Item",
 	Vector2(1,2): "Use to permanently learn the shield spell",
+	
+	##### Potions
+	Vector2(6,0): "Health Potion",
+	Vector2(6,1): "Potion",
+	Vector2(6,2): "Restores three hearts",
 	}
 		
 func set_item_index(index):

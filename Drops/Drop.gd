@@ -25,8 +25,8 @@ func _process(delta):
 	
 func collect(body):
 	if (body == Player):
-		queue_free()
 		PlayerInventory.add_item(item_index)
+		queue_free()
 
 func move_to_player():
 	var player_dir = (Math.point_directionv(
@@ -37,22 +37,13 @@ func move_to_player():
 	velocity.y = lerp(velocity.y, max_speed * player_dir.y, 
 		movespeed * get_process_delta_time())
 	
-	remainder = move(velocity)
-	if (is_colliding()):
-		_slide_on_walls()
+	move(velocity)
 		
 func stop_movement():
 	velocity.x = lerp(velocity.x, 0, movespeed * get_process_delta_time())
 	velocity.y = lerp(velocity.y, 0, movespeed * get_process_delta_time())
 		
-	remainder = move(velocity)
-	if (is_colliding()):
-		_slide_on_walls()
-	
-func _slide_on_walls():
-	var n = get_collision_normal()
-	remainder = n.slide(remainder)
-	move(remainder)
+	move(velocity)
 	
 func set_item_index(value):
 	item_index = value

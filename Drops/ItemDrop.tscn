@@ -19,8 +19,10 @@ item_index = -1
 
 [node name="ItemSprite" type="Sprite" parent="."]
 
+transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 centered = false
+offset = Vector2( 15, 15 )
 region = true
 region_rect = Rect2( 0, 0, 28, 28 )
 
@@ -28,7 +30,7 @@ region_rect = Rect2( 0, 0, 28, 28 )
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 14, 14 )
+shapes/0/transform = Matrix32( 0.5, 0, 0, 0.5, 15, 15 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -38,7 +40,8 @@ collision/layers = 2
 
 [node name="AreaCollision" type="CollisionShape2D" parent="DropArea"]
 
-transform/pos = Vector2( 14, 14 )
+transform/pos = Vector2( 15, 15 )
+transform/scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0

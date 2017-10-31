@@ -9,9 +9,6 @@
 [ext_resource path="res://Inventory/Information/Textures/Button/0.png" type="Texture" id=7]
 [ext_resource path="res://yoster.ttf" type="DynamicFontData" id=8]
 
-
-
-
 [sub_resource type="DynamicFont" id=1]
 
 font/size = 12

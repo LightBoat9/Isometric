@@ -4,9 +4,12 @@ var current_scene
 
 func _ready():
 	set_pause_mode(PAUSE_MODE_PROCESS)
-	var root = get_tree().get_root()
-	current_scene = root.get_child(root.get_child_count() -1)
+	var Root = get_tree().get_root()
+	current_scene = Root.get_child(Root.get_child_count() -1)
 	set_process_input(true)
+	load_game()
+	
+func _room_change():
 	load_game()
 
 func _input(event):
@@ -22,11 +25,13 @@ func _deferred_goto_scene(path):
 	var s = ResourceLoader.load(path)
 	var current_scene = s.instance()
 	get_tree().get_root().add_child(current_scene)
+	_room_change()
 	
 func save_game():
 	# Save Dictionary
 	var data = {
 		# Player
+		player_m1_active = PlayerSpells.m1_active
 	}
 	
 	var file = File.new()
@@ -52,7 +57,7 @@ func load_game():
 	# Get the data
 	var data = {}
 	data.parse_json(file.get_line())
-	print(data)
 	
-	for i in get_tree().get_nodes_in_group("save"):
-		i.load_game(data)
+	if (data != null):
+		for i in get_tree().get_nodes_in_group("save"):
+			i.load_game(data)

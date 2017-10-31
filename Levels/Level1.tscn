@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Tilesets/Basic/Basic.tres" type="TileSet" id=1]
 [ext_resource path="res://Tilesets/Dynamic/Stairs/Stairs.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Tilesets/Dynamic/WeakDirt/WeakDirt.tscn" type="PackedScene" id=4]
 [ext_resource path="res://NPCs/Darrell/NPCDarrell.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Drops/ItemDrop.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Enemies/Slime/EnemySlime.tscn" type="PackedScene" id=7]
 
 [node name="Level1" type="Node2D"]
 
@@ -156,9 +155,5 @@ transform/pos = Vector2( 14, -211 )
 
 transform/pos = Vector2( 240, -360 )
 item_index = 0
-
-[node name="EnemySlime" parent="Walls" instance=ExtResource( 7 )]
-
-transform/pos = Vector2( 64.3463, -169.418 )
 
 

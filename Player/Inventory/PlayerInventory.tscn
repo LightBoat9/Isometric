@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Player/Inventory/PlayerInventory.gd" type="Script" id=1]
 [ext_resource path="res://Player/Inventory/Textures/Background/0.png" type="Texture" id=2]
 [ext_resource path="res://Dialogue/TextBox/Font/yoster_island.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Player/Inventory/Textures/Coin/0.png" type="Texture" id=4]
 
 [node name="PlayerInventory" type="Node2D"]
 
@@ -13,20 +14,62 @@ script/script = ExtResource( 1 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Label" type="Label" parent="."]
+[node name="Currency" type="Label" parent="."]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 60.0
-margin/top = 46.0
-margin/right = 170.0
-margin/bottom = 60.0
+margin/left = 336.0
+margin/top = 48.0
+margin/right = 446.0
+margin/bottom = 62.0
 custom_fonts/font = ExtResource( 3 )
 text = ": 999,999"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Sprite" type="Sprite" parent="Currency"]
+
+texture = ExtResource( 4 )
+centered = false
+offset = Vector2( -15, 0 )
+
+[node name="UseItem" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 336.0
+margin/top = 224.0
+margin/right = 373.0
+margin/bottom = 244.0
+custom_fonts/font = ExtResource( 3 )
+disabled = true
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Use"
+flat = false
+
+[node name="EquiptItem" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 384.0
+margin/top = 224.0
+margin/right = 443.0
+margin/bottom = 244.0
+custom_fonts/font = ExtResource( 3 )
+disabled = true
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Equipt"
+flat = false
 
 

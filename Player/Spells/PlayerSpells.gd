@@ -13,6 +13,7 @@ func _ready():
 	
 func _input(event):
 	if (PlayerStateMachine.current_state == "menu"): return
+	if (PlayerStateMachine.current_state == "inventory"): return
 	"""
 	if (event.is_action_pressed("key_shield")):
 		if (Shield.is_visible()):
@@ -23,6 +24,7 @@ func _input(event):
 			
 func _process(delta):
 	if (PlayerStateMachine.current_state == "menu"): return
+	if (PlayerStateMachine.current_state == "inventory"): return
 	use_m1()
 	
 func set_m1_active(value):
@@ -39,3 +41,6 @@ func use_m1():
 		inst.set_pos(Vector2(Player.get_pos().x, Player.get_pos().y + 7.5))
 		Walls.add_child(inst)
 		M1Timer.start()
+	
+func load_game(data):
+	m1_active = data["player_m1_active"]

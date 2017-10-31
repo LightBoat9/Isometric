@@ -5,10 +5,9 @@
 [ext_resource path="res://Player/HUD/Textures/Shade/0.png" type="Texture" id=3]
 [ext_resource path="res://Dialogue/TextBox/Font/yoster_island.tres" type="DynamicFont" id=4]
 
-
 [node name="Spells" type="Node2D"]
 
-transform/pos = Vector2( 0, 256 )
+transform/pos = Vector2( 0, 258 )
 script/script = ExtResource( 1 )
 
 [node name="M1Sprite" type="Sprite" parent="."]

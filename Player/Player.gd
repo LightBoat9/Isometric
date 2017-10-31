@@ -18,6 +18,3 @@ func _input(event):
 			
 func save_game():
 	Global.save_game()
-	
-func load_game(data):
-	pass

@@ -32,9 +32,7 @@ animations = [ {
 "speed": 8.0
 } ]
 
-[node name="Player" type="KinematicBody2D" groups=[
-"save",
-]]
+[node name="Player" type="KinematicBody2D"]
 
 process/pause_mode = 2
 input/pickable = false
@@ -113,7 +111,7 @@ centered = false
 
 frames = SubResource( 2 )
 animation = "Float"
-frame = 5
+frame = 2
 playing = true
 centered = false
 
@@ -132,7 +130,9 @@ script/script = ExtResource( 14 )
 
 script/script = ExtResource( 15 )
 
-[node name="PlayerSpells" type="Node" parent="."]
+[node name="PlayerSpells" type="Node" parent="." groups=[
+"save",
+]]
 
 script/script = ExtResource( 16 )
 

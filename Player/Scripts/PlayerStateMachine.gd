@@ -10,7 +10,7 @@ func idle_update():
 		Inputs.key_up || Inputs.key_down):
 		set_current_state("move")
 		
-	PlayerMovement.update()
+	Player.Movement.update()
 		
 func move_enter(): pass
 func move_exit(): pass
@@ -19,7 +19,7 @@ func move_update():
 		!Inputs.key_up && !Inputs.key_down):
 		set_current_state("idle")
 	
-	PlayerMovement.update()
+	Player.Movement.update()
 
 func menu_enter(): get_tree().set_pause(true)
 func menu_exit(): get_tree().set_pause(false)

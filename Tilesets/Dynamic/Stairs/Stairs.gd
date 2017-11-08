@@ -12,4 +12,5 @@ func _ready():
 func player_enter(body):
 	if (body != Player): return
 	Global.save_game()
-	Global.goto_scene("res://Levels/Level2.tscn")
+	var lvl = int(Global.get_level()) + 1
+	Global.goto_scene("res://Levels/Level" + str(lvl) + ".tscn")

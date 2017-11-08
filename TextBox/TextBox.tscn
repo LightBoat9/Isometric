@@ -1,12 +1,22 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
-[ext_resource path="res://Dialogue/TextBox/TextBox.gd" type="Script" id=1]
-[ext_resource path="res://Dialogue/TextBox/Textures/TextBoxBack/0.png" type="Texture" id=2]
-[ext_resource path="res://Dialogue/TextBox/Textures/TextBoxFront/0.png" type="Texture" id=3]
-[ext_resource path="res://Dialogue/TextBox/Font/yoster_island.tres" type="DynamicFont" id=4]
-
+[ext_resource path="res://TextBox/TextBox.gd" type="Script" id=1]
+[ext_resource path="res://TextBox/Sprites/TextBoxBack/0.png" type="Texture" id=2]
+[ext_resource path="res://TextBox/Sprites/TextBoxFront/0.png" type="Texture" id=3]
 
 
+
+
+[sub_resource type="DynamicFontData" id=1]
+
+font_path = "res://Fonts/yoster_island.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 11
+font/use_mipmaps = false
+font/use_filter = false
+font/font = SubResource( 1 )
 
 [node name="TextBox" type="CanvasLayer"]
 
@@ -33,7 +43,7 @@ region_rect = Rect2( 0, 0, 30, 18 )
 texture = ExtResource( 3 )
 centered = false
 
-[node name="Text" type="Label" parent="."]
+[node name="BoxLabel" type="Label" parent="."]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -43,7 +53,8 @@ margin/left = 64.0
 margin/top = 12.0
 margin/right = 499.0
 margin/bottom = 54.0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = SubResource( 2 )
+text = "Test"
 autowrap = true
 clip_text = true
 percent_visible = 1.0

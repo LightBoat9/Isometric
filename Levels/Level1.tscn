@@ -71,9 +71,7 @@ tile_data = IntArray( -3407890, 0, -3407889, 0, -3407888, 0, -3407887, 0, -34078
 
 [node name="Player" parent="Walls" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( -60.3147, -98.7434 )
-collision/layers = 254
-collision/mask = 254
+transform/pos = Vector2( -60, -100 )
 
 [node name="WeakDirt1" parent="Walls" instance=ExtResource( 4 )]
 

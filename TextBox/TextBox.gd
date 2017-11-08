@@ -1,12 +1,14 @@
+# A TextBox that displays strings from an array
 extends "res://References/NodeReference.gd"
 
+# TextBox Nodes
 onready var Picture = get_node("Picture")
-onready var Text = get_node("Text")
+onready var BoxLabel = get_node("BoxLabel")
 onready var LetterTimer = get_node("LetterTimer")
 
-var Creator
+var Creator # Holds a reference to this objects instancer
 
-var text = "" setget set_text, get_text
+var text = ""
 var text_array = []
 var text_index = 0
 var text_done = false
@@ -14,8 +16,9 @@ var text_done = false
 func _ready():
 	LetterTimer.connect("timeout", self, "add_letter")
 	
-func init(Creator, text_array):
-	Text.set_text("")
+func setup(Creator, text_array):
+	text = ""
+	BoxLabel.set_text(text)
 	self.Creator = Creator
 	self.text_array = text_array
 	set_process_input(true)
@@ -32,10 +35,10 @@ func _input(event):
 			text = ""
 			for i in text_array[text_index]:
 				text += i
-			Text.set_text(text)
+			BoxLabel.set_text(text)
 			text_done = true
 	if (event.is_action_pressed("key_escape")): complete(false)
-
+	
 func set_picture(pic):
 	Picture.set_texture(pic)
 	Picture.set_scale(Vector2(3, 3))
@@ -46,16 +49,10 @@ func add_letter():
 		text_done = true
 		return
 	text += text_array[text_index][text.length()]
-	Text.set_text(text)
-	
-func set_text(value):
-	text = value
-
-func get_text():
-	return text
+	BoxLabel.set_text(text)
 	
 func complete(is_done):
-	PlayerStateMachine.current_state = PlayerStateMachine.last_state
+	Player.StateMachine.current_state = Player.StateMachine.last_state
 	Creator.text_box = null
 	if (is_done): Creator.dialogue_read()
 	text = ""

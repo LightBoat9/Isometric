@@ -1,14 +1,19 @@
-extends "res://References/StateMachine.gd"
+extends "res://References/NodeReference.gd"
+
+onready var HUD = get_node("HUD")
+onready var M1Timer = get_node("M1Timer")
+
+var StateMachine = load("res://Player/Scripts/PlayerStateMachine.gd").new()
+var Graphics = load("res://Player/Scripts/PlayerGraphics.gd").new()
+var Movement = load("res://Player/Scripts/PlayerMovement.gd").new()
+var Spells = load("res://Player/Scripts/PlayerSpells.gd").new()
 
 func _ready():
-	set_process_input(true)
+	add_child(StateMachine)
+	add_child(Graphics)
+	add_child(Movement)
+	add_child(Spells)
 	
-func _input(event):
-	if (get_tree().is_paused()): return
-	if (event.is_action_pressed("key_inventory")):
-		if (PlayerStateMachine.current_state != "inventory"):
-			PlayerInventory.show()
-			PlayerStateMachine.current_state = "inventory"
-		else:
-			PlayerInventory.hide()
-			PlayerStateMachine.current_state = PlayerStateMachine.last_state
+func load_game(data):
+	if (data.has("player_m1_active")):
+		Spells.m1_active = data["player_m1_active"]

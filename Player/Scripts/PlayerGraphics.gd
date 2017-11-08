@@ -5,4 +5,4 @@ func _ready():
 	
 func _process(delta):
 	# Flip sprite based on direction
-	PlayerSprites.set_flip_h(PlayerMovement.get_direction().x == -1)
+	PlayerSprites.set_flip_h(Player.Movement.get_direction().x == -1)

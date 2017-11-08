@@ -31,7 +31,7 @@ func save_game():
 	# Save Dictionary
 	var data = {
 		# Player
-		player_m1_active = PlayerSpells.m1_active
+		player_m1_active = Player.Spells.m1_active
 	}
 	
 	var file = File.new()
@@ -59,5 +59,8 @@ func load_game():
 	data.parse_json(file.get_line())
 	
 	if (data != null):
-		for i in get_tree().get_nodes_in_group("save"):
+		for i in get_tree().get_nodes_in_group("load"):
 			i.load_game(data)
+			
+func get_level():
+	return Game.get_name().substr(5,Game.get_name().length())

@@ -6,7 +6,7 @@ onready var NPCHighlight = get_node("NPCHighlight")
 onready var NPCSprite = get_node("NPCSprite")
 onready var NPCDialogue = get_node("NPCDialogue")
 
-var TextBox = load("res://Dialogue/TextBox/TextBox.tscn")
+var TextBox = load("res://TextBox/TextBox.tscn")
 
 var mouse_over = false
 
@@ -24,7 +24,7 @@ func _input(event):
 	if (event.is_action_pressed("mouse_left")):
 		if (mouse_over):
 			if (text_box == null):
-				PlayerStateMachine.current_state = "menu"
+				Player.StateMachine.current_state = "menu"
 				spawn_text_box()
 	
 func mouse_enter():
@@ -38,8 +38,7 @@ func mouse_exit():
 func spawn_text_box():
 	text_box = TextBox.instance()
 	Game.add_child(text_box)
-	text_box.init(self, text_array)
-	text_box.set_text("")
+	text_box.setup(self, text_array)
 	text_box.set_picture(NPCSprite.get_texture())
 	
 func dialogue_read():

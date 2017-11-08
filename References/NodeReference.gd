@@ -16,11 +16,7 @@ onready var Walls = Game.get_node("Walls")
 onready var Player = Walls.get_node("Player")
 
 # Player children
-onready var PlayerGraphics = Player.get_node("PlayerGraphics")
-onready var PlayerMovement = Player.get_node("PlayerMovement")
-onready var PlayerSpells = Player.get_node("PlayerSpells")
 onready var PlayerSprites = Player.get_node("PlayerSprites")
-onready var PlayerStateMachine = Player.get_node("PlayerStateMachine")
 
 # Player HUD children
 onready var PlayerInventory = Player.get_node("HUD/PlayerInventory")

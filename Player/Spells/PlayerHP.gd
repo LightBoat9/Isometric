@@ -65,7 +65,7 @@ func damage(amount, knockback_dir):
 	invin = true
 	invin_timer.start()
 	blink_timer.start()
-	PlayerMovement.knock_back(knockback_dir, 4)
+	Player.Movement.knock_back(knockback_dir, 4)
 	if (hp - amount >= 0): hp -= amount
 	else: hp = 0
 	update()

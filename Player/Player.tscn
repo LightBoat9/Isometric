@@ -1,23 +1,19 @@
-[gd_scene load_steps=21 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Player/PlayerStateMachine.gd" type="Script" id=2]
-[ext_resource path="res://Player/Spells/PlayerHP.gd" type="Script" id=3]
-[ext_resource path="res://Player/HUD/Spells.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Player/Inventory/PlayerInventory.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Player/HUD/Inventory.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Player/PlayerCamera.gd" type="Script" id=7]
-[ext_resource path="res://Player/Textures/Shadow/0.png" type="Texture" id=8]
-[ext_resource path="res://Player/Textures/Float/0.png" type="Texture" id=9]
-[ext_resource path="res://Player/Textures/Float/1.png" type="Texture" id=10]
-[ext_resource path="res://Player/Textures/Float/2.png" type="Texture" id=11]
-[ext_resource path="res://Player/Textures/Float/3.png" type="Texture" id=12]
-[ext_resource path="res://Player/Textures/Float/4.png" type="Texture" id=13]
-[ext_resource path="res://Player/Textures/Float/5.png" type="Texture" id=14]
-[ext_resource path="res://Player/Spells/PlayerGraphics.gd" type="Script" id=15]
-[ext_resource path="res://Player/PlayerMovement.gd" type="Script" id=16]
-[ext_resource path="res://Player/Spells/PlayerSpells.gd" type="Script" id=17]
-[ext_resource path="res://Player/Spells/Textures/Shield/0.png" type="Texture" id=18]
+[ext_resource path="res://Player/Spells/PlayerHP.gd" type="Script" id=2]
+[ext_resource path="res://Player/HUD/Spells/Spells.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Inventory/PlayerInventory.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/HUD/Backpack/Backpack.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/Scripts/PlayerCamera.gd" type="Script" id=6]
+[ext_resource path="res://Player/Textures/Shadow/0.png" type="Texture" id=7]
+[ext_resource path="res://Player/Textures/Float/0.png" type="Texture" id=8]
+[ext_resource path="res://Player/Textures/Float/1.png" type="Texture" id=9]
+[ext_resource path="res://Player/Textures/Float/2.png" type="Texture" id=10]
+[ext_resource path="res://Player/Textures/Float/3.png" type="Texture" id=11]
+[ext_resource path="res://Player/Textures/Float/4.png" type="Texture" id=12]
+[ext_resource path="res://Player/Textures/Float/5.png" type="Texture" id=13]
+[ext_resource path="res://Player/Spells/Textures/Shield/0.png" type="Texture" id=14]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -27,27 +23,25 @@ radius = 3.75
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "Float",
 "speed": 8.0
 } ]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"load",
+]]
 
 process/pause_mode = 2
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 15, 22.5 )
 shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
+collision/layers = 14
+collision/mask = 14
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-
-[node name="PlayerStateMachine" type="Node" parent="."]
-
-script/script = ExtResource( 2 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -58,15 +52,15 @@ scale = Vector2( 1, 1 )
 
 [node name="PlayerHP" type="Node2D" parent="HUD"]
 
-script/script = ExtResource( 3 )
+script/script = ExtResource( 2 )
 
-[node name="Spells" parent="HUD" instance=ExtResource( 4 )]
+[node name="Spells" parent="HUD" instance=ExtResource( 3 )]
 
-[node name="PlayerInventory" parent="HUD" instance=ExtResource( 5 )]
+[node name="PlayerInventory" parent="HUD" instance=ExtResource( 4 )]
 
 visibility/visible = false
 
-[node name="Inventory" parent="HUD" instance=ExtResource( 6 )]
+[node name="Inventory" parent="HUD" instance=ExtResource( 5 )]
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 
@@ -87,18 +81,18 @@ drag_margin/left = 0.0
 drag_margin/top = 0.0
 drag_margin/right = 0.0
 drag_margin/bottom = 0.0
-script/script = ExtResource( 7 )
+script/script = ExtResource( 6 )
 
 [node name="PlayerShadow" type="Sprite" parent="."]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 centered = false
 
 [node name="PlayerSprites" type="AnimatedSprite" parent="."]
 
 frames = SubResource( 2 )
 animation = "Float"
-frame = 1
+frame = 5
 playing = true
 centered = false
 
@@ -109,21 +103,7 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="PlayerGraphics" type="Node" parent="."]
-
-script/script = ExtResource( 15 )
-
-[node name="PlayerMovement" type="Node" parent="."]
-
-script/script = ExtResource( 16 )
-
-[node name="PlayerSpells" type="Node" parent="." groups=[
-"save",
-]]
-
-script/script = ExtResource( 17 )
-
-[node name="M1Timer" type="Timer" parent="PlayerSpells"]
+[node name="M1Timer" type="Timer" parent="."]
 
 process_mode = 1
 wait_time = 0.5
@@ -132,11 +112,12 @@ autostart = true
 
 [node name="Shield" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 
 [node name="ShieldSprite" type="Sprite" parent="Shield"]
 
-texture = ExtResource( 18 )
+texture = ExtResource( 14 )
 centered = false
 
 

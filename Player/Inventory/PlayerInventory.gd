@@ -1,4 +1,4 @@
-extends Node
+extends "res://References/NodeReference.gd"
 	
 onready var UseItem = get_node("UseItem")
 onready var EquiptItem = get_node("EquiptItem")
@@ -14,10 +14,13 @@ var selected_slot = null setget set_selected_slot, get_selected_slot
 var item_num = 0
 var max_item_num = 25
 
+var initial_pos = Vector2(292, 28)
+
 func _ready():
+	set_pos(initial_pos)
 	UseItem.connect("button_down", self, "use_item")
 	EquiptItem.connect("button_down", self, "equipt_item")
-	var inventory_start = Vector2(268+48-8, 64)
+	var inventory_start = Vector2(16, 32)
 	for y in range(5):
 		for x in range(5):
 			var inst = Slot.instance()
@@ -26,6 +29,12 @@ func _ready():
 				inventory_start.y + offset * y))
 			add_child(inst)
 			slot_array.append(inst)
+	set_process_input(true)
+	
+func _input(event):
+	if (get_tree().is_paused()): return
+	if (event.is_action_pressed("key_inventory")):
+		toggle_open()
 			
 func add_item(index):
 	if (item_num < max_item_num):
@@ -64,12 +73,18 @@ func update_slot_array():
 		slot_array[i].set_item_index(slot_array[i + 1].get_item_index())
 		slot_array[i + 1].set_item_index(-1)
 		
-	
-	
 func equipt_item():
 	if (selected_slot != null):
 		selected_slot.equipt_item()
 	
 func get_selected_slot():
 	return selected_slot
+	
+func toggle_open():
+	if (Player.StateMachine.current_state != "inventory"):
+		Player.StateMachine.current_state = "inventory"
+		show()
+	else:
+		Player.StateMachine.current_state = Player.StateMachine.last_state
+		hide()
 	

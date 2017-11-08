@@ -11,7 +11,7 @@ onready var SlimeState = get_node("SlimeState")
 
 var DestroyParticles = load("res://Enemies/Slime/SlimeParticles.tscn")
 
-var agro_range = 200
+var agro_range = 125
 
 var hp = 1
 var max_hp = 1

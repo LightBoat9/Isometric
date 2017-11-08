@@ -6,7 +6,7 @@ var Fireball = load("res://Player/Spells/PlayerFireball.tscn")
 
 var m1_active = false setget set_m1_active, get_m1_active
 
-func _ready():=
+func _ready():
 	set_process_input(true)
 	set_process(true)
 	
@@ -40,3 +40,7 @@ func use_m1():
 		inst.set_pos(Vector2(Player.get_pos().x, Player.get_pos().y + 7.5))
 		Walls.add_child(inst)
 		Player.M1Timer.start()
+	
+func load_game(data):
+	if (data.has("player_m1_active")):
+		m1_active = data["player_m1_active"]

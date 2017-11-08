@@ -59,7 +59,7 @@ func equipt_item():
 	
 func use_key_item(name):
 	if (name == "Fireball Scroll"):
-		PlayerSpells.m1_active = true
+		Player.Spells.m1_active = true
 		
 func use_potion(name):
 	if (name == "Health Potion"):

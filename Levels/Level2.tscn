@@ -28,6 +28,7 @@ tile_data = IntArray( -3538963, 1, -3538962, 1, -3538961, 1, -3538960, 1, -35389
 
 [node name="Grass" type="TileMap" parent="."]
 
+visibility/visible = false
 mode = 1
 tile_set = ExtResource( 1 )
 cell/size = Vector2( 30, 15 )

@@ -1,7 +1,7 @@
 extends "res://References/NodeReference.gd"
 
-var max_hp = 10
-var hp = 10
+var max_hp = 20
+var hp = max_hp
 
 var heart_array = []
 var back_array = []
@@ -22,12 +22,13 @@ func _ready():
 	update()
 	
 func instance_hearts():
-	for i in range(10):
+	for i in range(max_hp):
 		var inst = Sprite.new()
 		inst.set_centered(false)
 		heart_array.append(inst)
 		inst.set_pos(Vector2(8 + (18 * i), 8))
-		inst.set_texture(Heart)
+		if (i < hp): inst.set_texture(Heart)
+		else: inst.set_texture(HurtHeart)
 		add_child(inst)
 	
 func create_invin_timer():
@@ -57,8 +58,8 @@ func update():
 		i.set_texture(Heart)
 	for i in range(hp):
 		heart_array[i].show()
-	for i in range(10 - hp):
-		heart_array[9 - i].set_texture(HurtHeart)
+	for i in range(max_hp - hp):
+		heart_array[(max_hp - 1) - i].set_texture(HurtHeart)
 	
 func damage(amount, knockback_dir):
 	if (invin): return

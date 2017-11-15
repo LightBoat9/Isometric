@@ -5,10 +5,13 @@ extends "res://Enemies/Enemy.gd"
 onready var HPBar = get_node("HPBar")
 onready var HPMid = get_node("HPBar/HPMid")
 onready var ModTimer = get_node("ModTimer")
-onready var SlimeAttack = get_node("SlimeAttack")
 onready var SlimeSprites = get_node("SlimeSprites")
-onready var SlimeState = get_node("SlimeState")
 
+# Scripts
+var Attack = load("res://Enemies/Slime/Scripts/SlimeAttack.gd").new()
+var StateMachine = load("res://Enemies/Slime/Scripts/SlimeStateMachine.gd").new()
+
+# Instanced Nodes
 var DestroyParticles = load("res://Enemies/Slime/SlimeParticles.tscn")
 
 var agro_range = 125
@@ -17,12 +20,14 @@ var hp = 1
 var max_hp = 1
 	
 func _ready():
+	add_child(StateMachine)
+	add_child(Attack)
 	ModTimer.connect("timeout", self, "reset_modulate")
 	set_process(true)
 	
 func _process(delta):
 	if (Math.distance_to_point(get_pos(), Player.get_pos()) < agro_range):
-		SlimeState.set_current_state("attack")
+		StateMachine.set_current_state("attack")
 	
 func update_hp_bar():
 	HPBar.show()
@@ -40,7 +45,7 @@ func damage(amount, knockback_dir):
 	update_hp_bar()
 	
 func knock_back(dir, force):
-	SlimeAttack.velocity = dir * force
+	Attack.velocity = dir * force
 	
 func destroy():
 	spawn_particles()

@@ -1,10 +1,9 @@
 extends "res://References/NodeReference.gd"
 
 onready var BackpackSprite = get_node("BackpackSprite")
-onready var BackpackHighlight = get_node("BackpackHighlight")
 
-var bp_tex_closed = load("res://Player/HUD/Textures/Backpack/0.png")
-var bp_tex_open = load("res://Player/HUD/Textures/Backpack/1.png")
+var bp_tex_closed = load("res://Player/HUD/Backpack/Sprites/Sprites/0.png")
+var bp_tex_open = load("res://Player/HUD/Backpack/Sprites/Sprites/1.png")
 
 var mouse_over = false
 
@@ -17,10 +16,10 @@ func _input(event):
 		mouse_over = _is_mouse_over(event)
 		if mouse_over: 
 			BackpackSprite.set_texture(bp_tex_open)
-			BackpackHighlight.show()
+			BackpackSprite.get_material().set_shader_param("visible", 1)
 		else: 
 			BackpackSprite.set_texture(bp_tex_closed)
-			BackpackHighlight.hide()
+			BackpackSprite.get_material().set_shader_param("visible", 0)
 	
 	# Toggle inventory on mouse click
 	if (event.is_action_pressed("mouse_left")):

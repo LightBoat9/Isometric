@@ -1,6 +1,6 @@
 [gd_resource type="CanvasItemMaterial" load_steps=2 format=1]
 
-[sub_resource type="CanvasItemShader" id=4]
+[sub_resource type="CanvasItemShader" id=1]
 
 _code = {
 "fragment": "uniform float visible = 0;
@@ -35,9 +35,9 @@ COLOR = mix(col, outline_color * visible, max_a-orig_a);",
 
 [resource]
 
-shader/shader = SubResource( 4 )
+shader/shader = SubResource( 1 )
 shader/shading_mode = 0
-shader_param/visible = 1.0
+shader_param/visible = 0.0
 shader_param/outline_width = 1.0
 shader_param/outline_color = Color( 0.898039, 0.870588, 0.647059, 1 )
 

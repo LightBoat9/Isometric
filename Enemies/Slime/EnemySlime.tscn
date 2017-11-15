@@ -1,18 +1,16 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=14 format=1]
 
-[ext_resource path="res://Enemies/Slime/EnemySlime.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/Slime/SlimeStateMachine.gd" type="Script" id=2]
-[ext_resource path="res://Enemies/Slime/SlimeAttack.gd" type="Script" id=3]
-[ext_resource path="res://Enemies/Slime/Textures/Shadow/0.png" type="Texture" id=4]
-[ext_resource path="res://Enemies/Slime/Textures/Jump/0.png" type="Texture" id=5]
-[ext_resource path="res://Enemies/Slime/Textures/Jump/1.png" type="Texture" id=6]
-[ext_resource path="res://Enemies/Slime/Textures/Jump/2.png" type="Texture" id=7]
-[ext_resource path="res://Enemies/Slime/Textures/Jump/3.png" type="Texture" id=8]
-[ext_resource path="res://Enemies/Slime/Textures/Jump/4.png" type="Texture" id=9]
-[ext_resource path="res://Enemies/Slime/Textures/Jump/5.png" type="Texture" id=10]
-[ext_resource path="res://Enemies/Slime/Textures/HPBar/0.png" type="Texture" id=11]
-[ext_resource path="res://Enemies/Slime/Textures/HPBar/2.png" type="Texture" id=12]
-[ext_resource path="res://Enemies/Slime/Textures/HPBar/1.png" type="Texture" id=13]
+[ext_resource path="res://Enemies/Slime/Scripts/EnemySlime.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Slime/Textures/Shadow/0.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/Slime/Textures/Jump/0.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/Slime/Textures/Jump/1.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/Slime/Textures/Jump/2.png" type="Texture" id=5]
+[ext_resource path="res://Enemies/Slime/Textures/Jump/3.png" type="Texture" id=6]
+[ext_resource path="res://Enemies/Slime/Textures/Jump/4.png" type="Texture" id=7]
+[ext_resource path="res://Enemies/Slime/Textures/Jump/5.png" type="Texture" id=8]
+[ext_resource path="res://Enemies/Slime/Textures/HPBar/0.png" type="Texture" id=9]
+[ext_resource path="res://Enemies/Slime/Textures/HPBar/2.png" type="Texture" id=10]
+[ext_resource path="res://Enemies/Slime/Textures/HPBar/1.png" type="Texture" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -22,7 +20,7 @@ radius = 8.0
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Jump",
 "speed": 10.0
@@ -39,24 +37,16 @@ collision/mask = 3
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 
-[node name="SlimeState" type="Node" parent="."]
-
-script/script = ExtResource( 2 )
-
-[node name="SlimeAttack" type="Node" parent="."]
-
-script/script = ExtResource( 3 )
-
 [node name="SlimeShadow" type="Sprite" parent="."]
 
-texture = ExtResource( 4 )
+texture = ExtResource( 2 )
 centered = false
 
 [node name="SlimeSprites" type="AnimatedSprite" parent="."]
 
 frames = SubResource( 2 )
 animation = "Jump"
-frame = 3
+frame = 1
 playing = true
 centered = false
 
@@ -75,19 +65,19 @@ visibility/visible = false
 [node name="HPTop" type="Sprite" parent="HPBar"]
 
 transform/pos = Vector2( 7, 14 )
-texture = ExtResource( 11 )
+texture = ExtResource( 9 )
 centered = false
 
 [node name="HPBot" type="Sprite" parent="HPBar"]
 
 transform/pos = Vector2( 7, 14 )
-texture = ExtResource( 12 )
+texture = ExtResource( 10 )
 centered = false
 
 [node name="HPMid" type="Sprite" parent="HPBar"]
 
 transform/pos = Vector2( 7, 14 )
-texture = ExtResource( 13 )
+texture = ExtResource( 11 )
 centered = false
 
 [node name="ModTimer" type="Timer" parent="."]

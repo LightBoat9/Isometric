@@ -5,7 +5,6 @@
 [ext_resource path="res://Fonts/yoster_island.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Player/Inventory/Textures/Coin/0.png" type="Texture" id=4]
 
-
 [node name="PlayerInventory" type="Sprite"]
 
 texture = ExtResource( 1 )
@@ -19,10 +18,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 28.0
-margin/top = 13.0
-margin/right = 138.0
-margin/bottom = 26.0
+margin/left = 128.0
+margin/top = 16.0
+margin/right = 238.0
+margin/bottom = 29.0
 custom_fonts/font = ExtResource( 3 )
 text = ": 999,999"
 percent_visible = 1.0
@@ -41,10 +40,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 40.0
-margin/top = 193.0
-margin/right = 77.0
-margin/bottom = 212.0
+margin/left = 128.0
+margin/top = 160.0
+margin/right = 165.0
+margin/bottom = 179.0
 custom_fonts/font = ExtResource( 3 )
 disabled = true
 toggle_mode = false
@@ -59,10 +58,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 90.0
-margin/top = 193.0
-margin/right = 149.0
-margin/bottom = 212.0
+margin/left = 178.0
+margin/top = 160.0
+margin/right = 237.0
+margin/bottom = 179.0
 custom_fonts/font = ExtResource( 3 )
 disabled = true
 toggle_mode = false

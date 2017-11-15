@@ -10,31 +10,50 @@ var slot_size = 28
 var slot_space = 4
 	
 var selected_slot = null setget set_selected_slot, get_selected_slot
+
+var equip_array = []
 	
 var item_num = 0
-var max_item_num = 25
+var row_amount = 4
+var col_amount = 5
+var max_item_num = row_amount * col_amount
 
-var initial_pos = Vector2(292, 28)
+var initial_pos = Vector2(238, 58)
 
 func _ready():
 	set_pos(initial_pos)
 	UseItem.connect("button_down", self, "use_item")
 	EquiptItem.connect("button_down", self, "equipt_item")
-	var inventory_start = Vector2(16, 32)
-	for y in range(5):
-		for x in range(5):
-			var inst = Slot.instance()
-			var offset = slot_size + slot_space
-			inst.set_pos(Vector2(inventory_start.x + offset * x,
-				inventory_start.y + offset * y))
-			add_child(inst)
-			slot_array.append(inst)
+	instance_inventory()
+	instance_equipment()
 	set_process_input(true)
 	
 func _input(event):
 	if (get_tree().is_paused()): return
 	if (event.is_action_pressed("key_inventory")):
 		toggle_open()
+		
+func instance_inventory():
+	var inventory_start = Vector2(108, 32)
+	for y in range(row_amount):
+		for x in range(col_amount):
+			var inst = Slot.instance()
+			var offset = slot_size + slot_space
+			inst.set_pos(Vector2(inventory_start.x + offset * x,
+				inventory_start.y + offset * y))
+			add_child(inst)
+			slot_array.append(inst)
+			
+func instance_equipment():
+	var equip_start = Vector2(24, 48)
+	for y in range(2):
+		for x in range(2):
+			var inst = Slot.instance()
+			var offset = slot_size + slot_space
+			inst.set_pos(Vector2(equip_start.x + offset * x,
+				equip_start.y + offset * y))
+			add_child(inst)
+			equip_array.append(inst)
 			
 func add_item(index):
 	if (item_num < max_item_num):

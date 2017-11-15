@@ -10,4 +10,4 @@ func idle_update(): pass
 
 func attack_enter(): pass
 func attack_exit(): pass
-func attack_update(): get_parent().SlimeAttack.update()
+func attack_update(): get_parent().Attack.update()

@@ -76,7 +76,7 @@ limit/bottom = 10000000
 drag_margin/h_enabled = false
 drag_margin/v_enabled = false
 smoothing/enable = true
-smoothing/speed = 3.0
+smoothing/speed = 5.0
 drag_margin/left = 0.0
 drag_margin/top = 0.0
 drag_margin/right = 0.0
@@ -92,7 +92,7 @@ centered = false
 
 frames = SubResource( 2 )
 animation = "Float"
-frame = 5
+frame = 4
 playing = true
 centered = false
 

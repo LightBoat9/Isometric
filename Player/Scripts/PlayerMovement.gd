@@ -1,6 +1,6 @@
 extends "res://References/NodeReference.gd"
 
-var movespeed = 10
+var movespeed = 10.0
 var max_speed = 1.0
 
 var velocity = Vector2() setget , get_velocity

@@ -31,7 +31,6 @@ func save_game():
 	# Save Dictionary
 	var data = {
 		# Player
-		player_m1_active = Player.Spells.m1_active
 	}
 	
 	var file = File.new()

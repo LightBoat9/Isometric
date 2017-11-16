@@ -4,9 +4,9 @@ onready var Shield = Player.get_node("Shield")
 
 var Fireball = load("res://Player/Spells/PlayerFireball.tscn")
 
-var m1_active = false setget set_m1_active, get_m1_active
+var m1_active = false
 
-func _ready():=
+func _ready():
 	set_process_input(true)
 	set_process(true)
 	
@@ -25,12 +25,6 @@ func _process(delta):
 	if (Player.StateMachine.current_state == "menu"): return
 	if (Player.StateMachine.current_state == "inventory"): return
 	use_m1()
-	
-func set_m1_active(value):
-	m1_active = value
-	
-func get_m1_active():
-	return m1_active
 	
 func use_m1():
 	if (!m1_active): return

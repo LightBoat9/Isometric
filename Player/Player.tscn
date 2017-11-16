@@ -92,7 +92,7 @@ centered = false
 
 frames = SubResource( 2 )
 animation = "Float"
-frame = 4
+frame = 5
 playing = true
 centered = false
 
@@ -109,6 +109,13 @@ process_mode = 1
 wait_time = 0.5
 one_shot = true
 autostart = true
+
+[node name="M1Charge" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
 
 [node name="Shield" type="Node2D" parent="."]
 

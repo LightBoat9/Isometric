@@ -15,5 +15,4 @@ func _ready():
 	add_child(Spells)
 	
 func load_game(data):
-	if (data.has("player_m1_active")):
-		Spells.m1_active = data["player_m1_active"]
+	pass
